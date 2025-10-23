@@ -16,8 +16,7 @@ test('Test Multi Tab functionality', async () => {
     await child.waitForLoadState();
     console.log(await child.title());
 
-    await child.waitForTimeout(5000);
     await page.bringToFront();
-    await page.waitForTimeout(2000);
+    
     await browser.close();
 });
