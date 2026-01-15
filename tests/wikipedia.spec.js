@@ -2,7 +2,7 @@ import {test,chromium} from '@playwright/test';
 
 test('Test Multi Tab functionality', async () => {
 
-    const browser = await chromium.launch();
+    const browser = await chromium.launch({headless : false});
     const context = await browser.newContext();
     const page = await context.newPage();
     
@@ -14,9 +14,11 @@ test('Test Multi Tab functionality', async () => {
     ]);
 
     await child.waitForLoadState();
+
     console.log(await child.title());
 
     await page.bringToFront();
-    
+    console.log(await page.title());
+
     await browser.close();
 });
